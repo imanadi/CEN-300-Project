@@ -1,12 +1,4 @@
-Car Entered lane 2
-Speed in (km/s) is: 125
-Car Left lane 2
-truck is detected : 1
-Car Entered lane 1
-Speed in (km/s) is: 72
-Car Left lane 1
-car is detected : 1
-Car Entered lane 2
-Speed in (km/s) is: 125
-Car Left lane 2
-car is detected : 2
+Vehicle number    Speed of Vehicle   Time of entry   
+1                               69Km/hr                  4seconds
+2                               46Km/hr                  13seconds
+3                               77Km/hr                  15seconds

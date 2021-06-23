@@ -36,7 +36,7 @@ max_speed = 125
 right_corner = 800
 left_corner = 0
 # FPS of video
-delay = 3600
+delay = 60
 
 # print(frame.shape)
 dist = 6
@@ -46,9 +46,13 @@ speed = [0, 0, 0, 0, 0, 0]
 
 cars = 0
 truck = 0
+count =0
+
+start = time.time()
 
 recorded1,recorded2 = -100,-100
 
+print("Vehicle number    Speed of Vehicle   Time of entry   ")
 
 
 def centroid(x,y,w,h):
@@ -78,18 +82,23 @@ def for_left_lane(corr, num, cx, cy):
         if tim2 > tim1:
             speed[num - 1] = speedfunc(dist, tim1, tim2)
             speed[num - 1] = min(speed[num - 1], max_speed)
+            cur =time.time()
+            dif=int(cur-start)
+            global count 
+            count =count +1
 
-            print("Car Entered lane " + str(num))
-            print("Speed in (km/s) is:", speed[num - 1])
-            print("Car Left lane " + str(num))
+            print( str(count)+"                               "+str(speed[num-1])+"Km/hr                  "+str(dif)+"seconds")
+            # print("Car Entered lane " + str(num))
+            # print("Speed in (km/s) is:", speed[num - 1])
+            # print("Car Left lane " + str(num))
             recorded1 = h
         verify1 = 0
     if (recorded1 < 60 and recorded1 > 0):
         cars += 1
-        print("car is detected : " + str(cars))
+        # print("car is detected : " + str(cars))
     elif (recorded1 >= 60):
         truck += 1
-        print("truck is detected : " + str(truck))
+        # print("truck is detected : " + str(truck))
     recorded1 = -100
 
 
@@ -112,18 +121,22 @@ def for_right_lane(corr, num, cx, cy):
         if tim2 > tim1:
             speed[num - 1] = speedfunc(dist, tim1, tim2)
             speed[num - 1] = min(speed[num - 1], max_speed)
-
-            print("Car Entered lane " + str(num))
-            print("Speed in (km/s) is:", speed[num - 1])
-            print("Car Left lane " + str(num))
+            cur =time.time()
+            dif=int(cur-start)
+            global count 
+            count =count +1 
+            print( str(count)+"                               "+str(speed[num-1])+"Km/hr                  "+str(dif)+"seconds")
+            # print("Car Entered lane " + str(num))
+            # print("Speed in (km/s) is:", speed[num - 1])
+            # print("Car Left lane " + str(num))
             recorded2 = h
         verify2 = 0
     if (recorded2 < 80 and recorded2 > 0):
         cars += 1
-        print("car is detected : " + str(cars))
+        # print("car is detected : " + str(cars))
     elif (recorded2 >= 80):
         truck += 1
-        print("truck is detected : " + str(truck))
+        # print("truck is detected : " + str(truck))
     recorded2 = -100
 
 
